@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Earth – Plant a Tree</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--dark-green:#15803D;--accent-green:#1F7A4C}
+    body{background:#fff;color:#0f172a}
+    header{background:var(--dark-green);color:white}
+    .leaf-left{position:absolute;left:12px;top:40px;width:220px;opacity:0.95}
+    .leaf-right{position:absolute;right:12px;top:40px;width:220px;opacity:0.95;transform:scaleX(-1)}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    .product-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(6,78,59,0.06);display:flex;flex-direction:column}
+    .product-card .img{height:170px;background-size:cover;background-position:center}
+    @media(max-width:900px){.grid-main{grid-template-columns:1fr !important}.leaf-left,.leaf-right{display:none}}
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- Header -->
+  <header class="py-4">
+    <div class="container flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        
+        <div class="text-lg text-white font-bold">Green Earth</div>
+      </div>
+      <nav class="hidden md:flex gap-6">
+        <a href="#" class="text-white">About</a>
+        <a href="#" class="text-white">Adopt</a>
+        <a href="#" class="text-white">Explore</a>
+      </nav>
+      <button class="bg-yellow-400 text-green-700 font-semibold px-4 py-2 rounded-full">Plant a Tree</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative bg-green-50 px-30 py-20">
+    <img src="assets/hero-leaf1.png" class="leaf-right w-[380px] h-auto" alt="leaf right">
+    <img src="assets/hero-leaf1.png" class="leaf-left w-[380px] h-auto" alt="leaf left">
+
+  <div class="container text-center">
+    <h1 class="text-4xl font-extrabold text-black-800">Plant a Tree, Grow a Future</h1>
+    <p class="mt-3 text-gray-700">Join our mission to plant 1 million trees and make the Earth greener for future generation.</p>
+    <button id="get-involved" class="mt-6 bg-yellow-400 text-green-700 font-semibold px-6 py-3 rounded-full">
+      Get Involved
+    </button>
+  </div>
+</section>
+
+
+  <!-- Main: categories / cards / cart -->
+  <main class="container px-10 py-10">
+  <div class="mb-6 text-center">
+    <h2 class="text-2xl font-bold text-green-800 ">
+      Choose Your Tree
+    </h2><br>
+  </div>
+
+    <div class="grid grid-cols-12 gap-8 grid-main">
+      <!-- Categories -->
+      <aside class="col-span-2 md:col-span-3 lg:col-span-2">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold">Categories</h3>
+          
+          </div>
+          <div id="categoryList" class="flex flex-col gap-2 max-h-[420px] overflow-auto"></div>
+        </div>
+      </aside>
+
+      <!-- Cards -->
+      <section class="col-span-6 md:col-span-7 lg:col-span-7">
+        <div id="spinner" class="w-full flex items-center justify-center py-8 hidden"><span class="loading loading-spinner loading-lg"></span></div>
+        <div id="cardGrid" class="grid grid-cols-3 gap-1"></div>
+
+   
+        <div id="pagination" class="mt-6 flex items-center justify-center gap-3"></div>
+      </section>
+
+      <!-- Cart -->
+      <aside class="col-span-3 md:col-span-2 lg:col-span-3">
+        <div class="bg-white p-4 rounded-lg shadow sticky top-24">
+          <h3 class="font-bold">Your Cart</h3>
+          <div id="cartList" class="mt-3 max-h-56 overflow-auto text-sm">Empty</div>
+          <div class="mt-4 flex items-center justify-between font-semibold">
+            <span>Total</span>
+            <span id="cartTotal">$0</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <button id="clearCart" class="flex-1 py-2 rounded bg-gray-100">Clear</button>
+            <button id="checkoutBtn" class="flex-1 py-2 rounded bg-green-700 text-white">Checkout</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- About Campaign -->
+    <section class="mt-12">
+
+  <h2 class="text-2xl font-bold text-green-800 text-center mb-8">
+    About the Campaign
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    
+    <img src="assets/about.png" alt="about" class="rounded-lg shadow" />
+    <div>
+      <p class="text-gray-600">
+        Green Earth is a global tree plantation initiative dedicated to fighting
+        climate change. Since our start, we've planted over 500,000 trees
+        worldwide. By joining our campaign, you help restore forests, create
+        habitats for wildlife, and combat global warming.
+      </p>
+
+      <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
+        <li>Restoration of natural habitats</li>
+        <li>Improvement of air quality</li>
+        <li>Support for local communities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Impact -->
+    <section class="mt-12 bg-sky-200 px-20 py-12 rounded-lg" style="background:#bfe9ff">
+      <div class="grid grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg text-center shadow">
+          <div class="text-4xl font-bold text-green-700">500k+</div>
+          <div class="text-gray-700">Trees planted</div>
+        </div>
+        <div class="bg-white p-6 rounded-lg text-center shadow">
+          <div class="text-4xl font-bold text-green-700">120+</div>
+          <div class="text-gray-700">Involved</div>
+        </div>
+        <div class="bg-white p-6 rounded-lg text-center shadow">
+          <div class="text-4xl font-bold text-green-700">30+</div>
+          <div class="text-gray-700">Countries Covered</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+<footer class="bg-green-800 text-white py-12 mt-16">
+  <div class="container">
+    <h2 class="text-3xl font-bold text-center mb-8">Plant a Tree Today</h2>
+    <div class="bg-green-700 text-gray-800 rounded-2xl shadow-lg max-w-lg mx-auto p-6">
+      <form class="space-y-4">
+        <div>
+          <input type="text" placeholder="Enter your name"
+            class="w-full bg-white border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600" />
+        </div>
+        <div>
+          <input type="email" placeholder="Enter your email"
+            class="w-full bg-white border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600" />
+        </div>
+        <div>
+          <input type="number" min="number of tree " value="1"
+            class="w-full bg-white border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600" />
+        </div>
+        <div class="flex gap-3 mt-6">
+          <button type="submit" class="flex-1 bg-yellow-400 text-green-900 font-semibold py-2 rounded-full">
+            Donate Now
+          </button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</footer>
+
+<div class="bg-green-900 text-center py-3 mt-0">
+  <p class="text-sm text-gray-200">
+    &copy; <span id="year">2025 Green Earth. All Rights Reserved.</span> 
+  </p>
+</div>
+
+
+  
+  <dialog id="detailModal" class="modal"><div class="modal-box max-w-2xl"><form method="dialog"><button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button></form><div id="modalContent"></div></div></dialog>
+
+  <script>
+    
+    const PLANTS = {"status":true,"message":"successfully fetched plants data","plants":[{"id":1,"image":"https://i.ibb.co/com/cSQdg7tf/mango-min.jpg","name":"Mango Tree","description":"A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green canopy offers shade, while its sweet fruits are rich in vitamins and minerals.","category":"Fruit Tree","price":500},{"id":2,"image":"https://i.ibb.co/WNbbx3rn/guava-min.jpg","name":"Guava Tree","description":"A hardy fruit tree that grows in various climates, yielding guavas packed with Vitamin C. Its low maintenance nature makes it a favorite for home gardens.","category":"Fruit Tree","price":350},{"id":3,"image":"https://i.ibb.co/xt98PwZq/jackfruit-min.jpg","name":"Jackfruit Tree","description":"A large tropical tree that bears the world’s biggest fruit, the jackfruit. Its sweet and aromatic flesh is both nutritious and filling, and the tree itself provides generous shade.","category":"Fruit Tree","price":800},{"id":4,"image":"https://i.ibb.co/1YzsVWjm/Gulmohar-min.jpg","name":"Gulmohar","description":"Known as the ‘Flame of the Forest’, this tree bursts into a vibrant display of red flowers every summer. Perfect for beautifying avenues and gardens.","category":"Flowering Tree","price":400},{"id":5,"image":"https://i.ibb.co/qY8qS7YN/champa-min.jpg","name":"Champa","description":"A fragrant flowering tree that adorns gardens with its delicate white blossoms. Widely cherished in traditional rituals and perfumery.","category":"Flowering Tree","price":300},{"id":6,"image":"https://i.ibb.co/MxPrt83c/Krishnachura-min.jpg","name":"Krishnachura","description":"A striking ornamental tree famous for its brilliant orange-red blossoms. Its wide canopy adds a festive charm to parks and roadsides.","category":"Flowering Tree","price":450},{"id":7,"image":"https://i.ibb.co/FkH6MRhR/banyan-min.jpg","name":"Banyan Tree","description":"A majestic shade tree with a vast canopy and iconic aerial roots. Revered in many cultures, it offers shelter to countless birds and animals.","category":"Shade Tree","price":1200},{"id":8,"image":"https://i.ibb.co/CKXhH7nP/neem-min.jpg","name":"Neem Tree","description":"A medicinal shade tree with powerful insect-repelling properties. Its leaves, bark, and seeds are widely used in traditional remedies.","category":"Shade Tree","price":600},{"id":9,"image":"https://i.ibb.co/svQdDjS8/rain-min.jpg","name":"Rain Tree","description":"A fast-growing tree with umbrella-like canopy and soft pink flowers. Perfect for roadside planting to provide cool shade.","category":"Shade Tree","price":900},{"id":10,"image":"https://i.ibb.co/50K7Cgv/amla-min.jpg","name":"Amla Tree","description":"A small to medium tree producing fruits rich in Vitamin C and antioxidants. Its fruits are used in Ayurvedic tonics for boosting immunity.","category":"Medicinal Tree","price":550},{"id":11,"image":"https://i.ibb.co/MxSDCxV4/arjun-min.jpg","name":"Arjun Tree","description":"A sturdy tree with bark known for its heart-strengthening properties. Valued in herbal medicine for cardiovascular health.","category":"Medicinal Tree","price":700},{"id":12,"image":"https://i.ibb.co/pB68Sz1g/bael-min.jpg","name":"Bael Tree","description":"A fruit tree whose pulp is used as a natural coolant and digestive aid. The fragrant flowers also attract bees and butterflies.","category":"Medicinal Tree","price":500},{"id":13,"image":"https://i.ibb.co/391CtLWD/teak-min.jpg","name":"Teak","description":"A high-value hardwood tree known for its durability and resistance to termites. Widely used in luxury furniture and shipbuilding.","category":"Timber Tree","price":2000},{"id":14,"image":"https://i.ibb.co/QvGgW8Fb/mahogony-min.jpg","name":"Mahogany","description":"A premium timber tree producing richly colored, strong wood. Favored for fine furniture and interior paneling.","category":"Timber Tree","price":2500},{"id":15,"image":"https://i.ibb.co/Lz6BSq4Z/sal-min.jpg","name":"Sal Tree","description":"A tall hardwood tree producing extremely strong timber. Used extensively in heavy construction and railway sleepers.","category":"Timber Tree","price":1800},{"id":16,"image":"https://i.ibb.co/fdYphDNS/pine-min.jpg","name":"Pine","description":"An evergreen tree with needle-like leaves and fragrant resin. Commonly used for timber, paper production, and landscaping.","category":"Evergreen Tree","price":1500},{"id":17,"image":"https://i.ibb.co/YTJjYcGX/cypress-min.jpg","name":"Cypress","description":"A tall, dense evergreen tree often planted for privacy screens. Its wood is resistant to decay and pests.","category":"Evergreen Tree","price":1300},{"id":18,"image":"https://i.ibb.co/xSL9M8tg/fir-min.jpg","name":"Fir","description":"A conical evergreen tree ideal for ornamental gardens. Its wood is also used in light construction and paper making.","category":"Evergreen Tree","price":1400},{"id":19,"image":"https://i.ibb.co/x8gt87ks/bonsai-min.jpg","name":"Bonsai","description":"An artfully grown miniature tree cultivated in pots. Represents patience, harmony, and a connection to nature.","category":"Ornamental Plant","price":800},{"id":20,"image":"https://i.ibb.co/Y79mHSng/areca-palm-min.jpg","name":"Areca Palm","description":"An elegant indoor palm that purifies air and adds tropical charm. Low maintenance and perfect for home interiors.","category":"Ornamental Plant","price":600},{"id":21,"image":"https://i.ibb.co/8gqbH5LC/fan-palm-min.jpg","name":"Fan Palm","description":"A decorative palm with large, fan-shaped leaves. Suitable for both indoor decoration and garden landscapes.","category":"Ornamental Plant","price":900},{"id":22,"image":"https://i.ibb.co/xqFD0WyS/golden-bamboo-min.jpg","name":"Golden Bamboo","description":"A fast-growing bamboo variety with golden-yellow stems. Perfect for privacy hedges and eco-friendly construction.","category":"Bamboo","price":700},{"id":23,"image":"https://i.ibb.co/BKZ52h3q/black-bamboo-min.jpg","name":"Black Bamboo","description":"An exotic bamboo variety with striking black stems. Often used for ornamental purposes and furniture making.","category":"Bamboo","price":900},{"id":24,"image":"https://i.ibb.co/FL3c30KJ/giant-bamboo-min.jpg","name":"Giant Bamboo","description":"The tallest bamboo species, producing strong, thick stems. Useful for building materials and garden landscaping.","category":"Bamboo","price":1200},{"id":25,"image":"https://i.ibb.co/svtZJ7nw/money-plant-min.jpg","name":"Money Plant","description":"A popular indoor climber believed to bring prosperity. Thrives easily in soil or water with minimal care.","category":"Climber","price":350},{"id":26,"image":"https://i.ibb.co/Ngzp0tkJ/Bougainvillea-min.jpg","name":"Bougainvillea","description":"A vibrant flowering climber with pink, purple, or red blooms. Perfect for covering fences and garden walls.","category":"Climber","price":400},{"id":27,"image":"https://i.ibb.co/4ZrDBFHC/passion-flower-min.jpg","name":"Passion Flower","description":"An ornamental and medicinal climber with striking flowers. Known for attracting pollinators like bees and butterflies.","category":"Climber","price":500},{"id":28,"image":"https://i.ibb.co/VWNQPDMR/water-lily-min.jpg","name":"Water Lily","description":"A floating aquatic plant with large leaves and stunning blooms. Adds beauty to ponds while supporting aquatic life.","category":"Aquatic Plant","price":300},{"id":29,"image":"https://i.ibb.co/4g4J0Tkj/lotus-min.jpg","name":"Lotus","description":"A sacred aquatic plant with beautiful pink or white flowers. Symbolizes purity and grows in still, shallow water.","category":"Aquatic Plant","price":450},{"id":30,"image":"https://i.ibb.co/0jLycYdv/Water-Hyacinth-min.jpg","name":"Water Hyacinth","description":"A floating plant with violet flowers that provide shade to aquatic creatures. Known for rapid growth in ponds.","category":"Aquatic Plant","price":250}]};
+
+    
+    let currentCategory = 'All';
+    const pageSize = 6;
+    let currentPage = 1;
+    let filtered = PLANTS.plants.slice();
+    const cart = new Map();
+
+    
+    const categoryListEl = document.getElementById('categoryList');
+    const cardGrid = document.getElementById('cardGrid');
+    const spinner = document.getElementById('spinner');
+    const cartListEl = document.getElementById('cartList');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const showingCount = document.getElementById('showing-count');
+    const paginationEl = document.getElementById('pagination');
+
+    
+    const formatMoney = n => `$${Number(n).toLocaleString()}`;
+
+    function showSpinner(){ spinner.classList.remove('hidden'); }
+    function hideSpinner(){ spinner.classList.add('hidden'); }
+
+    
+    function buildCategories(){
+      const cats = ['All', ...new Set(PLANTS.plants.map(p=>p.category))];
+      categoryListEl.innerHTML = '';
+      cats.forEach(cat=>{
+        const btn = document.createElement('button');
+        btn.textContent = cat;
+        btn.className = 'text-left p-2 rounded hover:bg-green-50';
+        btn.addEventListener('click', ()=>{ selectCategory(cat, btn); });
+        categoryListEl.appendChild(btn);
+      });
+    }
+
+    function selectCategory(cat, btn){
+      currentCategory = cat;
+      currentPage = 1;
+      
+      [...categoryListEl.querySelectorAll('button')].forEach(b=>{ b.style.background=''; b.style.color=''; });
+      btn.style.background='var(--accent-green)'; btn.style.color='white';
+      
+      if(cat==='All') filtered = PLANTS.plants.slice(); else filtered = PLANTS.plants.filter(p=>p.category===cat);
+      renderCards();
+    }
+
+    function renderCards(){
+      cardGrid.innerHTML = '';
+      if(!filtered.length){ cardGrid.innerHTML = '<div class="col-span-3 text-center text-gray-600">No items</div>'; showingCount.textContent = '0'; paginationEl.innerHTML = ''; return; }
+      const start = (currentPage-1)*pageSize;
+      const pageItems = filtered.slice(start, start+pageSize);
+      pageItems.forEach(p=>{
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="img" style="background-image:url('${p.image}')"></div>
+          <div class="p-4 flex-1 flex flex-col">
+            <h4 class="text-lg font-semibold text-green-800 cursor-pointer" data-id="${p.id}">${p.name}</h4>
+            <p class="text-sm text-gray-600 flex-1 mt-2">${p.description.slice(0,100)}...</p>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-sm">${p.category}</span>
+              <span class="font-bold">${formatMoney(p.price)}</span>
+            </div>
+            <button class="mt-3 bg-green-700 text-white py-1.5 rounded " data-add="${p.id}">Add to Cart</button>
+          </div>`;
+        // events
+        card.querySelector('[data-id]')?.addEventListener('click', ()=>openModal(p));
+        card.querySelector('[data-add]')?.addEventListener('click', ()=>addToCart(p));
+        cardGrid.appendChild(card);
+      });
+      showingCount.textContent = `${filtered.length}`;
+      renderPagination();
+    }
+
+    function renderPagination(){
+      const totalPages = Math.ceil(filtered.length / pageSize);
+      paginationEl.innerHTML = '';
+      for(let i=1;i<=totalPages;i++){
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.className = 'px-3 py-1 rounded border';
+        if(i===currentPage){ btn.style.background='var(--accent-green)'; btn.style.color='white'; }
+        btn.addEventListener('click', ()=>{ currentPage = i; renderCards(); });
+        paginationEl.appendChild(btn);
+      }
+    }
+
+    const modal = document.getElementById('detailModal');
+    const modalContent = document.getElementById('modalContent');
+    function openModal(p){
+      modalContent.innerHTML = `
+        <div style="display:flex;gap:14px">
+          <img src="${p.image}" alt="${p.name}" style="width:160px;height:160px;object-fit:cover;border-radius:10px"/>
+          <div>
+            <h3 class="text-2xl font-bold text-green-800">${p.name}</h3>
+            <p class="mt-2 text-gray-700">${p.description}</p>
+            <div class="mt-3 font-semibold">Price: ${formatMoney(p.price)}</div>
+            <div class="mt-3"><button id="modalAdd" class="bg-green-700 text-white py-2 px-4 rounded">Add to Cart</button></div>
+          </div>
+        </div>`;
+      document.getElementById('modalAdd')?.addEventListener('click', ()=>{ addToCart(p); modal.close(); });
+      modal.showModal();
+    }
+
+    
+    function addToCart(p){
+      const row = cart.get(p.id) || {item:p, qty:0}; row.qty += 1; cart.set(p.id,row); renderCart();
+    }
+    function removeOne(id){ if(!cart.has(id)) return; const r=cart.get(id); r.qty -=1; if(r.qty<=0) cart.delete(id); else cart.set(id,r); renderCart(); }
+    function removeAll(id){ cart.delete(id); renderCart(); }
+
+    function renderCart(){
+      cartListEl.innerHTML = '';
+      if(cart.size===0){ cartListEl.textContent = 'Empty'; cartTotalEl.textContent='$0'; return; }
+      let total=0;
+      cart.forEach(({item,qty})=>{
+        total += item.price*qty;
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between py-2';
+        div.innerHTML = `<div class="min-w-0"><div class="font-semibold truncate">${item.name}</div><div class="text-xs text-gray-600">${qty} × ${formatMoney(item.price)}</div></div><div class="flex items-center gap-2"><button class="px-2 py-1 border rounded" data-minus="${item.id}">−</button><button class="px-2 py-1 border rounded" data-plus="${item.id}">+</button><button class="px-2 py-1 text-red-500" data-remove="${item.id}">✕</button></div>`;
+        div.querySelector('[data-minus]')?.addEventListener('click', ()=>removeOne(item.id));
+        div.querySelector('[data-plus]')?.addEventListener('click', ()=>addToCart(item));
+        div.querySelector('[data-remove]')?.addEventListener('click', ()=>removeAll(item.id));
+        cartListEl.appendChild(div);
+      });
+      cartTotalEl.textContent = formatMoney(total);
+    }
+
+    
+    buildCategories(); selectCategory('All', categoryListEl.querySelector('button'));
+    document.getElementById('resetCategory').addEventListener('click', ()=>{ selectCategory('All', categoryListEl.querySelector('button')); });
+    document.getElementById('clearCart').addEventListener('click', ()=>{ cart.clear(); renderCart(); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+  </script>
+</body>
+</html>
